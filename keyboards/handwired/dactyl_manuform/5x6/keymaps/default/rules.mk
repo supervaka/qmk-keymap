@@ -17,6 +17,6 @@ BOOTLOADER = atmel-dfu
 COMMAND_ENABLE = no
 
 ROOT_DIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
-include ${ROOT_DIR}../../../../../rules.mk
+include ${ROOT_DIR}../../../../../../rules.mk
 
-SRC += features/achordion.c
+VIA_ENABLE = yes

@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# VIA_ENABLE = yes
+
 COMBO_ENABLE = yes
 EXTRAKEY_ENABLE = yes
 LTO_ENABLE = yes
@@ -20,9 +22,8 @@ REPEAT_KEY_ENABLE = yes
 UNICODE_ENABLE = no
 UNICODEMAP_ENABLE = no
 UCIS_ENABLE = no
-UNICODE_COMMON = yes
 
-AUTOCORRECT_ENABLE ?= yes
+
 CAPS_WORD_ENABLE ?= yes
 CONSOLE_ENABLE ?= no
 GRAVE_ESC_ENABLE ?= no
@@ -42,22 +43,4 @@ ifeq ($(strip $(CUSTOM_SHIFT_KEYS_ENABLE)), yes)
 	SRC += features/custom_shift_keys.c
 endif
 
-LAYER_LOCK_ENABLE ?= yes
-ifeq ($(strip $(LAYER_LOCK_ENABLE)), yes)
-	OPT_DEFS += -DLAYER_LOCK_ENABLE
-	SRC += features/layer_lock.c
-endif
-
-ORBITAL_MOUSE_ENABLE ?= no
-ifeq ($(strip $(ORBITAL_MOUSE_ENABLE)), yes)
-	MOUSE_ENABLE = yes
-	OPT_DEFS += -DORBITAL_MOUSE_ENABLE
-	SRC += features/orbital_mouse.c
-endif
-
-SENTENCE_CASE_ENABLE ?= yes
-ifeq ($(strip $(SENTENCE_CASE_ENABLE)), yes)
-	OPT_DEFS += -DSENTENCE_CASE_ENABLE
-	SRC += features/sentence_case.c
-endif
 
