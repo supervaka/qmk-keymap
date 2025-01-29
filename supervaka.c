@@ -18,8 +18,6 @@ enum layers {
 // not used
 #define SYM_PLUS LT(SYM,KC_PLUS)
 #define SYM_LPRN LT(SYM,KC_LPRN)
-#define SYM_3    LT(SYM,KC_3)
-#define SYM_2    LT(SYM,KC_2)
 // not used
 
 // #define LM_LCTL		LM(QWERTY,MOD_LCTL)
@@ -50,8 +48,9 @@ enum layers {
 
 #define SYM_EQL  LT(SYM,KC_EQL)
 #define SYM_SCLN LT(SYM2,KC_SCLN)
-#define SYM_1    LT(SYM,KC_1)
-#define SYM_0    LT(SYM2,KC_0)
+
+#define SYM_3    LCTL_T(KC_3)
+#define SYM_8    RCTL_T(KC_8)
 
 #define SYM_4    LT(SYM,KC_4)
 #define SYM_7    LT(SYM2,KC_7)
@@ -74,6 +73,8 @@ combo_t key_combos[] = {
 const custom_shift_key_t custom_shift_keys[] = {
   {KC_DOT, KC_EXLM}, // Shift . is !
   {KC_COMMA, KC_DOT},
+  {KC_LBRC, KC_LBRC},
+  {KC_RBRC, KC_RBRC},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS =
     sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
