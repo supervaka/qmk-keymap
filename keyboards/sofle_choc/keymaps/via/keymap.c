@@ -30,9 +30,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT(
     KC_ESC,   	KC_F1,    KC_F2,  	KC_F3,    KC_F4,    KC_F5,                          KC_F6,    KC_F7,  	KC_F8,    KC_F9,    KC_F10,     KC_F11,
     KC_TAB, 	KC_X,	  KC_F,		KC_D,	  KC_P, 	KC_Q,                           KC_J,	  QK_AREP,	KC_O,     KC_U,		KC_UNDS,	KC_F12,
-    KC_BSPC,  	HOME_N,	  HOME_S, 	HOME_T,	  HOME_C,	SFT_Y,                          SFT_M,    HOME_H,	HOME_A,	  HOME_E,	HOME_I,   	KC_UNDS,
+    KC_BSPC,  	HOME_N,	  HOME_S, 	HOME_T,	  HOME_C,	SFT_Y,                          SFT_M,    HOME_H,	HOME_A,	  HOME_E,	HOME_I,   	KC_SCLN,
     LM_LCTL,  	KC_B,     KC_V,		KC_K,	  SFT_G,	KC_W,    XXXXXXX,     XXXXXXX,  KC_COMMA, SFT_L,	KC_QUOT,  KC_SLSH,	KC_DOT,   	KC_ENT,
-                          KC_ENT,   KC_LALT,  OSM_LSFT,	KC_SPC,  KC_ENT,      KC_UNDS,  NUM_R,    QK_REP,   _______,  KC_ENT
+                          KC_ENT,   KC_LALT,  OSM_LSFT,	SYM_SPC, KC_ENT,      KC_UNDS,  NUM_R,    SYM_REP,  _______,  KC_ENT
 ),
 // SYM2 == SYM, is needed for layer tap issues when rapidly alternating hands
 [SYM] = SYM_LAYER,

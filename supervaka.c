@@ -46,6 +46,9 @@ enum layers {
 
 #define NUM_R   LT(NUM,KC_R)
 
+#define SYM_SPC LT(SYM,KC_SPC)
+#define SYM_REP LT(SYM2,KC_0)
+
 #define SYM_EQL  LT(SYM,KC_EQL)
 #define SYM_SCLN LT(SYM2,KC_SCLN)
 
@@ -92,6 +95,13 @@ static bool lt_with_mods_key(keyrecord_t* record, uint8_t mods) {
   return true;  // Continue normal handling.
 }
 
+// https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
+                            uint8_t* remembered_mods) {
+  if (keycode == SYM_REP) { return false; }
+  return true;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 #ifdef ACHORDION_ENABLE
   if (!process_achordion(keycode, record)) { return false; }
@@ -100,12 +110,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (!process_custom_shift_keys(keycode, record)) { return false; }
 #endif  // CUSTOM_SHIFT_KEYS_ENABLE
 
-    switch (keycode) {
-        // Behave as KC_Z on tap, LM(_NAV, MOD_LCTL) on hold.
-        case LM_LCTL:
-            return lt_with_mods_key(record, MOD_BIT(KC_LCTL));
+  switch (keycode) {
+    // Behave as KC_Z on tap, LM(_NAV, MOD_LCTL) on hold.
+    case LM_LCTL:
+      return lt_with_mods_key(record, MOD_BIT(KC_LCTL));;
+        
+    case SYM_REP:
+      if (record->tap.count) {  // On tap.
+        repeat_key_invoke(&record->event);  // Repeat the last key.
+      return false;  // Skip default handling.
     }
-    return true;
+    break;
+  }
+  return true;
 }
 
 
@@ -125,6 +142,8 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   switch (tap_hold_keycode) {
     case LM_LCTL:
     case NUM_R:
+    case SYM_SPC:
+    case SYM_REP:
 
     // case HOME_C:
     // case HOME_H:
