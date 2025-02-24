@@ -8,3 +8,6 @@ tools/qmk_song_player/song_test.js
 **/node_modules
 **/package-lock.json
 .vscode
+compile_commands.json
+.cache
+qmk-keymap.code-workspace
