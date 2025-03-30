@@ -36,6 +36,19 @@ enum layers {
 #define SFT_Y LSFT_T(KC_Y)
 #define SFT_M LSFT_T(KC_M)
 
+#define NUM_Y LT(NUM, KC_Y)
+#define NUM_M LT(NUM, KC_M)
+
+#define NUM_K LT(NUM, KC_K)
+#define NUM_QUOT LT(NUM, KC_QUOT)
+// do this for v and /
+#define NUM_V LT(NUM, KC_V)
+#define NUM_SLSH LT(NUM, KC_SLSH)
+
+// this doesn't work, probably needs 2 layers like SYM and SYM2?
+// #define NUM_PIPE LT(NUM, KC_PIPE)
+// #define NUM_RCBR LT(NUM, KC_RCBR)
+
 #define SFT_G LSFT_T(KC_G)
 #define SFT_L LSFT_T(KC_L)
 
