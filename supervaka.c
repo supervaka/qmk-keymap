@@ -78,10 +78,17 @@ enum layers {
 const uint16_t PROGMEM test_combo1[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM test_combo2[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM test_combo3[] = {KC_Z, KC_X, COMBO_END};
+// KC_J,     KC_K,	  KC_L,	    KC_SCLN # This is the QWERTY layer
+// KC_LEFT,  KC_UP,    KC_DOWN,  KC_RIGHT
+const uint16_t PROGMEM combo_up[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_left[] = {KC_LEFT, KC_UP, COMBO_END};
+const uint16_t PROGMEM combo_down[] = {KC_UP, KC_DOWN, COMBO_END};
+const uint16_t PROGMEM combo_right[] = {KC_DOWN, KC_RIGHT, COMBO_END};
 combo_t key_combos[] = {
-    COMBO(test_combo1, C(KC_C)),
-    COMBO(test_combo2, C(KC_V)),
-    COMBO(test_combo3, C(KC_Z)),
+    COMBO(test_combo1, C(KC_C)),  COMBO(test_combo2, C(KC_V)),
+    COMBO(test_combo3, C(KC_Z)),  COMBO(combo_up, KC_UP),
+    COMBO(combo_left, KC_LEFT),   COMBO(combo_down, KC_DOWN),
+    COMBO(combo_right, KC_RIGHT),
 };
 #endif  // COMBO_ENABLE
 

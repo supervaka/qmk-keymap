@@ -19,7 +19,7 @@
 
 // clang-format off
 #define SYM_LAYER LAYOUT( \
-    _______,   	_______,  _______,  _______,  _______,  _______,                        _______,  _______,  _______,  _______,  _______,    _______, \
+    _______,   	KC_F1,    KC_F2,  	KC_F3,    KC_F4,    KC_F5,                          KC_F6,    KC_F7,  	KC_F8,    KC_F9,    KC_F10,      _______, \
     _______,	KC_TILD,  KC_LT,	KC_GT,	  KC_HASH,  KC_DEL,                         _______,  _______,  KC_LBRC,  KC_RBRC,  KC_PERC,	_______, \
     _______,  	KC_AMPR,  KC_MINS, 	KC_PLUS,  SYM_EQL,	KC_DLR,                         KC_EQL,   SYM_SCLN, KC_LPRN,  KC_RPRN,  KC_GRV,     _______, \
     _______,  	KC_CIRC,  KC_PIPE,  KC_ASTR,  KC_BSLS,  KC_ENT,  XXXXXXX,     XXXXXXX,  _______,  KC_COLN,  KC_LCBR,  KC_RCBR,	KC_AT,   	_______, \
@@ -28,7 +28,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT(
-    KC_ESC,   	KC_F1,    KC_F2,  	KC_F3,    KC_F4,    KC_F5,                          KC_F6,    KC_F7,  	KC_F8,    KC_F9,    KC_F10,     KC_F11,
+    KC_ESC,   	KC_1,     KC_2,  	KC_3,     KC_4,     KC_5,                           KC_6,     KC_7,  	KC_8,     KC_9,     KC_0,       KC_F11,
     KC_TAB, 	KC_X,	  KC_F,		KC_D,	  KC_P, 	KC_Q,                           KC_J,	  QK_AREP,	KC_O,     KC_U,		KC_UNDS,	KC_F12,
     KC_BSPC,  	HOME_N,	  HOME_S, 	HOME_T,	  HOME_C,	NUM_Y,                          NUM_M,    HOME_H,	HOME_A,	  HOME_E,	HOME_I,   	KC_RIGHT,
     LM_LCTL,  	KC_B,     NUM_V,    NUM_K,	  SFT_G,	KC_W,    XXXXXXX,     XXXXXXX,  KC_COMMA, SFT_L,	NUM_QUOT, NUM_SLSH,	KC_DOT,   	KC_ENT,
@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [NUM] = LAYOUT(
     _______,   	_______,  RGB_TOG,  RGB_MOD,  _______,  _______,                        _______,  _______,  _______,  _______,  _______,    _______,
     _______,	_______,  KC_ESC,	KC_TAB,   KC_DEL,   _______,                        _______,  _______,  KC_COMMA, KC_DOT,   _______,	_______,
-    _______,  	KC_1,     KC_2,  	SYM_3,    SYM_4,    KC_5,                           KC_6,    SYM_7,  	SYM_8,     KC_9,     KC_0,   	_______,
+    _______,  	KC_1,     KC_2,  	SYM_3,    SYM_4,    KC_5,                           KC_6,     SYM_7,  	SYM_8,    KC_9,     KC_0,   	_______,
     _______,  	KC_HOME,  KC_END,   KC_PGUP,  KC_PGDN,  _______, XXXXXXX,     XXXXXXX,  _______,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RIGHT,   _______,
                           _______,  _______,  _______,  _______, _______,     _______,  _______,  KC_PSCR,  _______,  _______
 ),
