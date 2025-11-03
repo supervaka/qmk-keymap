@@ -22,6 +22,7 @@ enum layers {
 
 // #define LM_LCTL		LM(QWERTY,MOD_LCTL)
 #define LM_LCTL LT(QWERTY, KC_Z)
+#define LM_SYM LT(SYM, KC_Z)
 
 #define LM_LGUI LM(QWERTY, MOD_LGUI)
 #define OSM_LGUI OSM(MOD_LGUI)
@@ -45,6 +46,10 @@ enum layers {
 #define NUM_V LT(NUM, KC_V)
 #define NUM_SLSH LT(NUM, KC_SLSH)
 
+#define SYM_V LT(SYM, KC_V)
+#define SYM_SLSH LT(SYM, KC_SLSH)
+#define SYM_ENT LT(SYM, KC_ENT)
+
 // this doesn't work, probably needs 2 layers like SYM and SYM2?
 // #define NUM_PIPE LT(NUM, KC_PIPE)
 // #define NUM_RCBR LT(NUM, KC_RCBR)
@@ -59,6 +64,7 @@ enum layers {
 
 #define NUM_R LT(NUM, KC_R)
 
+#define NUM_SPC LT(NUM, KC_SPC)
 #define SYM_SPC LT(SYM, KC_SPC)
 #define SYM_REP LT(SYM2, KC_0)
 
@@ -84,12 +90,13 @@ const uint16_t PROGMEM combo_up[] = {KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM combo_left[] = {KC_LEFT, KC_UP, COMBO_END};
 const uint16_t PROGMEM combo_down[] = {KC_UP, KC_DOWN, COMBO_END};
 const uint16_t PROGMEM combo_right[] = {KC_DOWN, KC_RIGHT, COMBO_END};
+
+const uint16_t PROGMEM combo_capsword[] = {KC_L, KC_SCLN, COMBO_END};
 combo_t key_combos[] = {
     COMBO(test_combo1, C(KC_C)),  COMBO(test_combo2, C(KC_V)),
     COMBO(test_combo3, C(KC_Z)),  COMBO(combo_up, KC_UP),
     COMBO(combo_left, KC_LEFT),   COMBO(combo_down, KC_DOWN),
-    COMBO(combo_right, KC_RIGHT),
-};
+    COMBO(combo_right, KC_RIGHT), COMBO(combo_capsword, QK_CAPS_WORD_TOGGLE)};
 #endif  // COMBO_ENABLE
 
 #ifdef CUSTOM_SHIFT_KEYS_ENABLE
@@ -165,8 +172,13 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   switch (tap_hold_keycode) {
     case LM_LCTL:
     case NUM_R:
+    case NUM_SPC:
     case SYM_SPC:
     case SYM_REP:
+    case LM_SYM:
+    case SYM_ENT:
+    case HOME_C:
+    case HOME_H:
 
       // case HOME_C:
       // case HOME_H:
