@@ -24,13 +24,15 @@
 #define FLOW_TAP_TERM 100
 #define CHORDAL_HOLD
 #define PERMISSIVE_HOLD
+#define SPECULATIVE_HOLD
 #define QUICK_TAP_TERM_PER_KEY
+
+#define DUMMY_MOD_NEUTRALIZER_KEYCODE KC_RCTL
+#define MODS_TO_NEUTRALIZE \
+  { MOD_BIT(KC_LALT), MOD_BIT(KC_LGUI), MOD_BIT(KC_RGUI) }
 
 // Uncomment this line for verbose QMK core tap-hold logging.
 // #define ACTION_DEBUG
-
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
 
 #define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
 
@@ -123,4 +125,7 @@
 #  define STARTUP_SONG  SONG(NO_SOUND)
 #  define GOODBYE_SONG  SONG(NO_SOUND)
 #endif  // AUDIO_ENABLE
+
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
 

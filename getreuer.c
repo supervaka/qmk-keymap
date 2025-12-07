@@ -341,6 +341,12 @@ bool get_chordal_hold(
 }
 #endif  // CHORDAL_HOLD
 
+#ifdef SPECULATIVE_HOLD
+bool get_speculative_hold(uint16_t keycode, keyrecord_t* record) {
+  return true;  // Enable for all mods.
+}
+#endif  // SPECULATIVE_HOLD
+
 #ifdef COMMUNITY_MODULE_TAP_FLOW_ENABLE
 uint16_t get_tap_flow_term(uint16_t keycode, keyrecord_t* record,
                            uint16_t prev_keycode) {

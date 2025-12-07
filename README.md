@@ -56,10 +56,6 @@ for general tips on writing userspace libraries and contributing to QMK.
 * [SOCD Cleaner](https://getreuer.info/posts/keyboards/socd-cleaner/index.html)
   &ndash; enhance WASD for fast inputs for gaming
 
-* [Speculative
-  Hold](https://getreuer.info/posts/keyboards/speculative-hold/index.html)
-  &ndash; apply mod-tap mods immediately
-
 The following were originally developed here and have since graduated to become
 QMK core features. It is recommended to use the QMK core implementations, but
 (perhaps for sake of customization or curiosity) you may continue to use these
@@ -84,6 +80,11 @@ userspace versions:
 * [Repeat Key](https://getreuer.info/posts/keyboards/repeat-key/index.html)
   &ndash; userspace version of [QMK's Repeat
   Key](https://docs.qmk.fm/features/repeat_key)
+
+* [Speculative
+  Hold](https://getreuer.info/posts/keyboards/speculative-hold/index.html)
+  &ndash; userspace version of [QMK's Speculative
+  Hold](https://docs.qmk.fm/tap_hold#speculative-hold)
 
 * [Tap Flow](https://getreuer.info/posts/keyboards/tap-flow/index.html) &ndash;
   userspace predecessor of [QMK's Flow
