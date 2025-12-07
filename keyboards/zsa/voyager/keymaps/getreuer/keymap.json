@@ -4,7 +4,6 @@
     "getreuer/orbital_mouse",
     "getreuer/palettefx",
     "getreuer/select_word",
-    "getreuer/sentence_case",
-    "getreuer/custom_shift_keys"
+    "getreuer/sentence_case"
   ]
 }

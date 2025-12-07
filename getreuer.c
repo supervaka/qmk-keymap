@@ -230,18 +230,37 @@ combo_t key_combos[] = {
 // clang-format on
 
 ///////////////////////////////////////////////////////////////////////////////
+// Key Overrides (https://docs.qmk.fm/features/key_overrides) or
 // Custom shift keys (https://getreuer.info/posts/keyboards/custom-shift-keys)
 ///////////////////////////////////////////////////////////////////////////////
-#ifdef COMMUNITY_MODULE_CUSTOM_SHIFT_KEYS_ENABLE
+#ifdef KEY_OVERRIDE_ENABLE
+const key_override_t hrm_dot_key_override =
+    ko_make_basic(MOD_MASK_SHIFT, HRM_DOT, KC_QUES); // Shift . is ?
+const key_override_t dot_key_override =
+    ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_QUES); // Shift . is ?
+const key_override_t comm_key_override =
+    ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_EXLM); // Shift , is !
+const key_override_t slsh_key_override =
+    ko_make_basic(MOD_MASK_SHIFT, KC_SLSH, KC_BSLS); // Shift / is backslash
+const key_override_t mply_key_override =
+    ko_make_basic(MOD_MASK_SHIFT, KC_MPLY, KC_MNXT); // Shift play is next
+
+const key_override_t* key_overrides[] = {
+    &hrm_dot_key_override,
+    &dot_key_override,
+    &comm_key_override,
+    &slsh_key_override,
+    &mply_key_override,
+};
+#elif defined(COMMUNITY_MODULE_CUSTOM_SHIFT_KEYS_ENABLE)
 const custom_shift_key_t custom_shift_keys[] = {
     {HRM_DOT, KC_QUES},
     {KC_DOT, KC_QUES},
     {KC_COMM, KC_EXLM},
-    {KC_MINS, KC_SCLN},
     {KC_SLSH, KC_BSLS},
     {KC_MPLY, KC_MNXT},
 };
-#endif  // COMMUNITY_MODULE_CUSTOM_SHIFT_KEYS_ENABLE
+#endif
 
 ///////////////////////////////////////////////////////////////////////////////
 // Tap-hold configuration (https://docs.qmk.fm/tap_hold)
