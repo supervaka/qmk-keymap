@@ -70,7 +70,7 @@
     XXXXXXX, XXXXXXX, XXXXXXX, KC_DOWN, KC_UP  ,                            \
                                                           XXXXXXX, KC_PGUP, \
                                                                    KC_PGDN, \
-                                                 k40    ,     k41, KC_BTN1, \
+                                                 k40    ,     k41, MS_BTN1, \
                                                                             \
                       k50    , k51    , k52    , k53    , k54    , k55    , \
                       k60    , k61    , k62    , k63    , k64    , k65    , \

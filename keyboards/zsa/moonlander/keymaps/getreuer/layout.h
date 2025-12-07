@@ -60,17 +60,17 @@
                          k80, k81, k82, k83, k84, k85,                      \
                     k90, k91)                                               \
     LAYOUT_LR_MOONLANDER(                                                   \
-    k00    , k01    , k02    , k03    , k04    , k05    , KC_BTN1,          \
+    k00    , k01    , k02    , k03    , k04    , k05    , MS_BTN1,          \
     k10    , k11    , k12    , k13    , k14    , k15    , KC_PGUP,          \
     k20    , k21    , k22    , k23    , k24    , k25    , KC_PGDN,          \
     k30    , k31    , k32    , k33    , k34    , k35    ,                   \
     XXXXXXX, XXXXXXX, XXXXXXX, KC_DOWN, KC_UP  ,                            \
                                                                    XXXXXXX, \
-                                                 k40    ,     k41, KC_BTN1, \
+                                                 k40    ,     k41, MS_BTN1, \
                                                                             \
              RGBDEF1, k50    , k51    , k52    , k53    , k54    , k55    , \
              RGBHRND, k60    , k61    , k62    , k63    , k64    , k65    , \
-             RGBBRI , k70    , k71    , k72    , k73    , k74    , k75    , \
+             XXXXXXX, k70    , k71    , k72    , k73    , k74    , k75    , \
                       k80    , k81    , k82    , k83    , k84    , k85    , \
                                KC_LEFT, KC_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, \
     XXXXXXX,                                                                \
