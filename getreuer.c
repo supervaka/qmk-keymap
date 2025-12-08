@@ -121,19 +121,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TMUXESC, KC_GRV , KC_LABK, KC_RABK, KC_MINS, KC_PIPE,
     _______, KC_EXLM, KC_ASTR, NAV_SLS, NAV_EQL, KC_AMPR,
     STDCC  , KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,
-                                                 USRNAME, _______,
+                                                 _______, _______,
 
                       _______, _______, _______, _______, _______, _______,
                       KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR , ARROW  , _______,
                       KC_HASH, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO, _______,
                       KC_AT  , KC_COLN, KC_COMM, KC_DOT , KC_QUOT, _______,
-             _______, _______
+             _______, USRNAME
   ),
 
   [NAV] = LAYOUT_LR(  // Navigation layer.
     _______, _______, _______, _______, _______, _______,
     _______, KC_WREF, C(KC_PGUP), C(KC_PGDN), XXXXXXX, XXXXXXX,
-    _______, KC_LALT, KC_LCTL, KC_LSFT, SELLINE, MS_BTN1,
+    _______, KC_LALT, KC_LCTL, KC_LSFT, SELLINE, C(KC_X),
     _______, KC_LGUI, KC_PGUP, KC_PGDN, XXXXXXX, XXXXXXX,
                                                  _______, _______,
 
@@ -177,24 +177,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, KC_F12 , KC_F9  , KC_F8  , KC_F7  , XXXXXXX,
     XXXXXXX, KC_F10 , KC_F3  , KC_F2  , KC_F1  , XXXXXXX,
     XXXXXXX, KC_F11 , KC_F6  , KC_F5  , KC_F4  , XXXXXXX,
-                                                 XXXXXXX, DB_TOGG,
+                                                 XXXXXXX, XXXXXXX,
 
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                       XXXXXXX, XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, XXXXXXX,
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RGUI, QK_RBT ,
-             XXXXXXX, QK_LLCK
+             DB_TOGG, QK_LLCK
   ),
 
   [EXT] = LAYOUT_LR(  // Mouse and extras.
     _______, _______, _______, _______, _______, _______,
-    _______, C(KC_Z), OM_W_L , KC_BSPC, KC_SPC , OM_W_R ,
+    OM_FAST, C(KC_Z), OM_W_L , KC_BSPC, KC_SPC , OM_W_R ,
     OM_SLOW, KC_LALT, KC_LCTL, KC_LSFT, SELLINE, XXXXXXX,
     _______, KC_LGUI, C(KC_V), C(KC_A), C(KC_C), C(KC_X),
                                                  KC_WBAK, OM_BTN1,
 
                       _______, _______, _______, _______, _______, _______,
-                      OM_W_U , OM_BTN1, OM_U   , OM_BTN2, SRCHSEL, _______,
+                      OM_W_U , OM_BTN1, OM_U   , OM_BTN2, OM_FAST, _______,
                       OM_W_D , OM_L   , OM_D   , OM_R   , OM_SLOW, _______,
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
              OM_BTN1, QK_LLCK
@@ -752,7 +752,7 @@ static void lighting_set_palette(uint8_t palette) {
 static void lighting_preset(uint8_t effect, uint8_t palette) {
   lighting_set_palette(palette);
   rgb_matrix_mode_noeeprom(effect);
-  rgb_matrix_set_speed_noeeprom(80);
+  rgb_matrix_set_speed_noeeprom(60);
 }
 #endif // COMMUNITY_MODULE_PALETTEFX_ENABLE
 
@@ -872,7 +872,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   // Logic for Alt mod when using alt-tabbing keys.
   if (keycode == HRM_DOT && record->tap.count == 0 && !record->event.pressed) {
     unregister_mods(MOD_BIT_LALT);
-  } else if (record->event.pressed &&
+  } else if (record->event.pressed && get_repeat_key_count() == 0 &&
       (keycode == S(A(KC_TAB)) || keycode == A(KC_TAB))) {
     register_mods(MOD_BIT_LALT);
   }
@@ -923,51 +923,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     // Behavior:
     //  * Unmodified:       _ (KC_UNDS)
-    //  * With Shift:       - (KC_MINS)
     //  * With Alt:         Unicode en dash
     //  * With Shift + Alt: Unicode em dash
-    case KC_UNDS: {
-      static uint16_t registered_keycode = KC_NO;
-
-      if (record->event.pressed) {
-        if (alt) {
+    case KC_UNDS:
+      if (alt) {
+        if (record->event.pressed) {
           send_unicode_string(shift_mods ? "\xe2\x80\x94" : "\xe2\x80\x93");
-        } else {
-          process_caps_word(keycode, record);
-          const bool shifted = (mods | get_weak_mods()) & MOD_MASK_SHIFT;
-          clear_weak_mods();
-          clear_mods();
-
-          if (registered_keycode) {  // Invoked through Repeat key.
-            unregister_code16(registered_keycode);
-          } else {
-            registered_keycode = shifted ? KC_MINS : KC_UNDS;
-          }
-
-          register_code16(registered_keycode);
-          set_mods(mods);
         }
-      } else if (registered_keycode) {
-        unregister_code16(registered_keycode);
-        registered_keycode = KC_NO;
+        return false;
       }
-    } return false;
+      break;
 
     // Hold behavior: switches to EXT layer.
-    // Tap behavior:
-    //  * Unmodified:       :
-    //  * With Shift:       ;
+    // Tap behavior: :
     case EXT_COL:
       if (record->tap.count) {
         if (record->event.pressed) {
-          if (shift_mods) {
-            del_weak_mods(MOD_MASK_SHIFT);
-            unregister_mods(MOD_MASK_SHIFT);
-            tap_code_delay(KC_SCLN, TAP_CODE_DELAY);
-            set_mods(mods);
-          } else {
-            tap_code16_delay(KC_COLN, TAP_CODE_DELAY);
-          }
+          tap_code16_delay(KC_COLN, TAP_CODE_DELAY);
         }
         return false;
       }
@@ -1044,7 +1016,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case SRCHSEL:  // Searches the current selection in a new tab.
         // Mac users, change LCTL to LGUI.
         SEND_STRING_DELAY(
-            SS_LCTL("ct") SS_DELAY(100) SS_LCTL("v") SS_TAP(X_ENTER),
+            SS_LCTL("ct") SS_DELAY(200) SS_LCTL("v") SS_TAP(X_ENTER),
             TAP_CODE_DELAY);
         return false;
 
@@ -1134,7 +1106,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         break;
 
       case RGBDEF1:
-        lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, PALETTEFX_MECHA);
+        lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, PALETTEFX_HERO);
         break;
 
       case RGBDEF2:
