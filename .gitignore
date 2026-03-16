@@ -11,3 +11,6 @@ tools/qmk_song_player/song_test.js
 compile_commands.json
 .cache
 qmk-keymap.code-workspace
+.cline_storage
+keyboards/gk87/
+*.uf2
