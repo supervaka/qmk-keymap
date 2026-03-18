@@ -30,6 +30,9 @@ for general tips on writing userspace libraries and contributing to QMK.
   keys](https://getreuer.info/posts/keyboards/custom-shift-keys/index.html)
   &ndash; customize what keycode is produced when shifted
 
+* [Cyclotab](https://getreuer.info/posts/keyboards/cyclotab/index.html) &ndash;
+  a swapper implementation for easier Alt+Tabbing
+
 * [Lumino](https://getreuer.info/posts/keyboards/lumino/index.html) &ndash; a
   minimal, opinionated control scheme for RGB matrix lighting
 
