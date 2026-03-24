@@ -1,4 +1,4 @@
-# Pascal Getreuer's QMK keymap
+# @getreuer's QMK keymap
 
 (This is not an officially supported Google product.)
 
@@ -18,27 +18,26 @@ This repo uses the Apache License 2.0 except where otherwise indicated. See the
 
 ## Feature libraries
 
-Several userspace feature libraries for QMK are developed in this repo. Code is
-under the [features](features/) directory and detailed documentation can be
-found in the links below. For developers, see also my post [developing QMK
+Several features are developed as QMK community modules in
+[getreuer/qmk-modules](https://github.com/getreuer/qmk-modules/), a git
+submodule of this repo. The former pre-module code is under the
+[features](features/). Detailed documentation can be found in the links below.
+For developers, see also my post [developing QMK
 features](https://getreuer.info/posts/keyboards/developing-qmk-features/index.html)
 for general tips on writing userspace libraries and contributing to QMK.
 
-* [Achordion](https://getreuer.info/posts/keyboards/achordion/index.html)
-  &ndash; customize the tap-hold decision
-
-* [Autocorrection](https://getreuer.info/posts/keyboards/autocorrection/index.html)
-  &ndash; run rudimentary autocorrection on your keyboard
-
-* [Caps Word](https://getreuer.info/posts/keyboards/caps-word/index.html)
-  &ndash; modern alternative to Caps Lock
-
 * [Custom shift
   keys](https://getreuer.info/posts/keyboards/custom-shift-keys/index.html)
-  &ndash; they're surprisingly tricky to get right; here is my approach
+  &ndash; customize what keycode is produced when shifted
 
-* [Layer Lock key](https://getreuer.info/posts/keyboards/layer-lock/index.html)
-  &ndash; macro to stay in the current layer
+* [Cyclotab](https://getreuer.info/posts/keyboards/cyclotab/index.html) &ndash;
+  a swapper implementation for easier Alt+Tabbing
+
+* [Lumino](https://getreuer.info/posts/keyboards/lumino/index.html) &ndash; a
+  minimal, opinionated control scheme for RGB matrix lighting
+
+* [Keycode String](https://getreuer.info/posts/keyboards/keycode-string/index.html)
+  &ndash; format keycodes as human-readable strings
 
 * [Mouse Turbo
   Click](https://getreuer.info/posts/keyboards/mouse-turbo-click/index.html)
@@ -48,8 +47,11 @@ for general tips on writing userspace libraries and contributing to QMK.
   Mouse](https://getreuer.info/posts/keyboards/orbital-mouse/index.html) &ndash;
   a polar approach to mouse key control
 
-* [Repeat Key](https://getreuer.info/posts/keyboards/repeat-key/index.html)
-  &ndash; an extensible "repeat last key" implementation
+* [PaletteFx](https://getreuer.info/posts/keyboards/palettefx/index.html) &ndash;
+  palette-based animated RGB matrix lighting effects
+
+* [Select Word](https://getreuer.info/posts/keyboards/select-word/index.html)
+  &ndash; macro for convenient word or line selection
 
 * [Sentence Case](https://getreuer.info/posts/keyboards/sentence-case/index.html)
   &ndash; automatically capitalize the first letter of sentences
@@ -57,17 +59,45 @@ for general tips on writing userspace libraries and contributing to QMK.
 * [SOCD Cleaner](https://getreuer.info/posts/keyboards/socd-cleaner/index.html)
   &ndash; enhance WASD for fast inputs for gaming
 
-* [Word selection](https://getreuer.info/posts/keyboards/select-word/index.html)
-  &ndash; macro for convenient word or line selection
+The following were originally developed here and have since graduated to become
+QMK core features. It is recommended to use the QMK core implementations, but
+(perhaps for sake of customization or curiosity) you may continue to use these
+userspace versions:
+
+* [Achordion](https://getreuer.info/posts/keyboards/achordion/index.html)
+  &ndash; userspace predecessor of [QMK's Chordal
+  Hold](https://docs.qmk.fm/tap_hold#chordal-hold)
+
+* [Autocorrection](https://getreuer.info/posts/keyboards/autocorrection/index.html)
+  &ndash; userspace version of [QMK's
+  Autocorrect](https://docs.qmk.fm/features/autocorrect)
+
+* [Caps Word](https://getreuer.info/posts/keyboards/caps-word/index.html)
+  &ndash; userspace version of [QMK's Caps
+  Word](https://docs.qmk.fm/features/caps_word)
+
+* [Layer Lock key](https://getreuer.info/posts/keyboards/layer-lock/index.html)
+  &ndash; userspace version of [QMK's Layer
+  Lock](https://docs.qmk.fm/features/layer_lock)
+
+* [Repeat Key](https://getreuer.info/posts/keyboards/repeat-key/index.html)
+  &ndash; userspace version of [QMK's Repeat
+  Key](https://docs.qmk.fm/features/repeat_key)
+
+* [Speculative
+  Hold](https://getreuer.info/posts/keyboards/speculative-hold/index.html)
+  &ndash; userspace version of [QMK's Speculative
+  Hold](https://docs.qmk.fm/tap_hold#speculative-hold)
+
+* [Tap Flow](https://getreuer.info/posts/keyboards/tap-flow/index.html) &ndash;
+  userspace predecessor of [QMK's Flow
+  Tap](https://docs.qmk.fm/tap_hold#flow-tap)
 
 
 ## My keymap
 
-Here is a visualization of my keymap. See the [Dactyl
-keymap.c](keyboards/handwired/dactyl_promicro/keymaps/getreuer/keymap.c),
-[Moonlander keymap.c](keyboards/zsa/moonlander/keymaps/getreuer/keymap.c), or
-[Voyager keymap.c](keyboards/zsa/voyager/keymaps/getreuer/keymap.c) and
-[getreuer.c](getreuer.c) for full details.
+Here is a visualization of my keymap. See [getreuer.c](getreuer.c) for full
+details.
 
 **Base layer** ([Magic
 Sturdy](https://getreuer.info/posts/keyboards/alt-layouts/index.html#magic-sturdy) with home row mods)
@@ -78,31 +108,43 @@ Sturdy](https://getreuer.info/posts/keyboards/alt-layouts/index.html#magic-sturd
 
 ![Symbol layer](doc/layout-1-symbol.png)
 
+**Navigation layer**
+
+![Nav layer](doc/layout-2-nav.png)
+
 **Numpad layer**
 
-![Num layer](doc/layout-2-num.png)
+![Num layer](doc/layout-3-num.png)
 
 **Window management layer**
 
-![Win layer](doc/layout-3-win.png)
+![Win layer](doc/layout-4-win.png)
 
 **Funky fun layer**
 
-![Fun layer](doc/layout-4-fun.png)
+![Fun layer](doc/layout-5-fun.png)
+
+**Extras and mouse layer**
+
+![Ext layer](doc/layout-6-ext.png)
 
 
 ## Installation
 
 This repo works as an [External QMK
-Userspace](https://docs.qmk.fm/newbs_external_userspace). Instructions on how
-to use it in QMK:
+Userspace](https://docs.qmk.fm/newbs_external_userspace) and makes use of the
+[Community Modules](https://docs.qmk.fm/features/community_modules) support
+added in QMK Firmware 0.28.0, released 2025-02-27. Instructions on how to use
+it in QMK:
 
-1. [Set up QMK](https://docs.qmk.fm/newbs).
+1. [Set up QMK](https://docs.qmk.fm/newbs) or [update your QMK set
+   up](https://docs.qmk.fm/newbs_git_using_your_master_branch#updating-your-master-branch)
+   to get the latest.
 
 2. Clone this repo locally
 
    ```sh
-   git clone https://github.com/getreuer/qmk-keymap
+   git clone --recurse-submodules https://github.com/getreuer/qmk-keymap
    ```
 
 3. Run the following shell command, replacing "`path/to/qmk-keymap`" with the
