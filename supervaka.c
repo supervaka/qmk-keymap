@@ -4,7 +4,6 @@
 #ifdef CUSTOM_SHIFT_KEYS_ENABLE
 #include "features/custom_shift_keys.h"
 #endif  // CUSTOM_SHIFT_KEYS_ENABLE
-
 #pragma once
 
 enum layers {

@@ -1,6 +1,12 @@
-# Ergo68 Custom Keymap
+# Ergo68 Supervaka Keymap
 
 This keymap has been ported from the Sofle Choc keyboard layout with adaptations for the Ergo68's extra columns.
+
+Compile with:
+
+```sh
+qmk compile -kb yushakobo/ergo68 -km supervaka
+```
 
 ## Layout Overview
 
@@ -12,7 +18,7 @@ The Ergo68 has 68 keys vs the Sofle Choc's 58 keys. The extra 10 keys are distri
 
 - **BASE (0)**: Main typing layer with home row mods
 - **SYM (1)**: Symbol layer for programming
-- **SYM2 (2)**: Duplicate of SYM for layer tap consistency 
+- **SYM2 (2)**: Duplicate of SYM for layer tap consistency
 - **NUM (3)**: Number layer with numpad-like layout
 - **QWERTY (4)**: Standard QWERTY layout for compatibility
 
@@ -29,5 +35,3 @@ The Ergo68 has 68 keys vs the Sofle Choc's 58 keys. The extra 10 keys are distri
 - `SYM_ENT`: Hold for SYM layer, tap for Enter
 - `NUM_R`: Hold for NUM layer, tap for R
 - `SYM_REP`: Hold for SYM2 layer, tap for repeat last key
-
-### Extra Column Usage

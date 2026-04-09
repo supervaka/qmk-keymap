@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# VIA_ENABLE = yes
+VIA_ENABLE = yes
 
 COMBO_ENABLE = yes
 EXTRAKEY_ENABLE = yes
